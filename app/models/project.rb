@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :company
 
-  has_many :project_members
+  has_many :project_members, dependent: :destroy
   has_many :users, through: :project_members
 
   validates :start_date, presence: true

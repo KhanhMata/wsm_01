@@ -1,0 +1,44 @@
+<% provide :title, @department.name %>
+<div class="banner-w3agile">
+  <div class="container">
+    <h3>
+      <span>
+        <%= t (".view") %>
+      </span>
+    </h3>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-11" >
+    <%= tag(:br) %>
+    <div class="panel panel-info">
+
+      <div class="panel-heading">
+        <h3 class="panel-title center"></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-department-information">
+              <tbody>
+                <tr>
+                  <td><%= t ".name" %></td>
+                  <td><%= @department.name %></td>
+                </tr>
+                <tr>
+                  <td><%= t ".abbreviation" %></td>
+                  <td><%= @department.abbreviation %></td>
+                </tr>
+                <tr>
+                  <td><%= t ".description" %></td>
+                  <td><%= @department.description %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "users_list" %>

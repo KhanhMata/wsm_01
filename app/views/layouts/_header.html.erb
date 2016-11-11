@@ -12,11 +12,15 @@
               <% else %>
                 <% if user_signed_in? %>
                   <% if current_user.manager? %>
-                    <li><%= link_to t("manage_workspace"), "#" %></li>
-                    <li><%= link_to t("manage_users"), users_path %></li>
-                    <li><%= link_to t("manage_skills"), "#" %></li>
-                    <li><%= link_to t("manage_projects"),
-                      projects_path %></li>
+                    <% if current_user.company %>
+                      <li><%= link_to t("manage_workspace"), "#" %></li>
+                      <li><%= link_to t("manage_departments"),
+                      departments_path %>
+                      <li><%= link_to t("manage_users"), users_path %></li>
+                      <li><%= link_to t("manage_skills"), "#" %></li>
+                      <li><%= link_to t("manage_projects"),
+                        projects_path %></li>
+                    <% end %>
                   <% else %>
                     <li><%= link_to t("user_workspace"), "#" %></li>
                   <% end %>

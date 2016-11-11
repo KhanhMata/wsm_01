@@ -28,4 +28,4 @@ default_password: "123456"
 gender:
   female: female
   male: male
-each_user: 1
+default_staff_number: 0
