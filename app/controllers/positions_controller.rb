@@ -2,16 +2,28 @@ class PositionsController < ApplicationController
   before_action :load_position, only: [:edit, :update]
 
   def edit
-    @users = User.all
+    @staff_positions = Position.of_workspace(@position.workspace_id).
+      position_staff
+    @users = User.user_without_position(@staff_positions)
   end
 
   def update
     @workspace = @position.workspace
-    if @position.update_attributes position_params
-      flash[:success] = t "flash.success.updated_workspace"
-      redirect_to :back
+    if @position.staff?
+      if @position.update_attributes position_params
+        @position.update_user_position
+        flash[:success] = t "flash.success.updated_workspace"
+        redirect_to :back
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @position.update_attributes position_params
+        flash[:success] = t "flash.success.updated_workspace"
+        redirect_to :back
+      else
+        render :edit
+      end
     end
   end
 

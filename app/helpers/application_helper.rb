@@ -22,4 +22,12 @@ module ApplicationHelper
     options.reverse_merge! theme: "twitter-bootstrap-3"
     super objects, options
   end
+
+  def show_number_of_staffs department_id, users_size
+    if users_size[department_id].nil?
+      Settings.default_staff_number
+    else
+      users_size[department_id]
+    end
+  end
 end
