@@ -1,0 +1,48 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1><%= yield(:modal_title) %></h1>
+    </div>
+    <%= simple_form_for @workspace, authenticity_token: true,
+      remote: true do |f| %>
+      <div class="modal-body">
+        <div class="form_errors">
+          <%= render "shared/error_messages", object: @workspace %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :number_of_columns %>
+          <%= f.number_field :number_of_columns, disabled: true,
+            class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :number_of_rows %>
+          <%= f.number_field :number_of_rows, disabled: true,
+            class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :avatar, class: "col-sm-2 control-label"  %>
+          <div class="col-sm-6">
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="pull-left">
+          <%= link_to t(".increase_workspace_size"),
+            edit_workspace_path(@workspace), class: "btn btn-primary" %>
+        </span>
+        <span class="pull-right">
+          <%= f.submit yield(:submit_button), class: "btn btn-primary" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

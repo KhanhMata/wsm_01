@@ -22,4 +22,16 @@ module ApplicationHelper
     options.reverse_merge! theme: "twitter-bootstrap-3"
     super objects, options
   end
+
+  def show_number_of_objects group_id, objects_size
+    if objects_size[group_id].nil?
+      Settings.default_object_number
+    else
+      objects_size[group_id]
+    end
+  end
+
+  def staff_with_position position_user_id
+    User.find_by id: [position_user_id]
+  end
 end

@@ -1,0 +1,9 @@
+<% @user_skills.each do |user_skill| %>
+  <%= "#{user_skill.skill.name} (#{user_skill.experience_years})" %>
+  <% if current_user.manager? %>
+    <%= link_to t(".edit"), edit_user_skill_path(user_skill), remote: true %>
+    <%= link_to t(".delete"), user_skill_path(user_skill),
+      method: :delete, data: {confirm: t(".delete_user_skill_confirm")} %>
+  <% end %>
+  <br>
+<% end %>

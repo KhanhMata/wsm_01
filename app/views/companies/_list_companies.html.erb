@@ -1,0 +1,13 @@
+<% @companies.each_with_index do |company, index| %>
+  <tr>
+    <td><%= increase_index @companies, index %></td>
+    <td><%= company.name %></td>
+    <td><%= show_number_of_objects company.id, @users_size %></td>
+    <td><%= show_number_of_objects company.id, @workspaces_size %></td>
+    <% if admin_signed_in? %>
+      <td>
+        <%= link_to t(".show"), company_path(company.id) %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>

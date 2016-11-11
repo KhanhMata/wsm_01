@@ -1,16 +1,24 @@
 <% @workspaces.each_with_index do |workspace, index| %>
   <tr>
     <td><%= increase_index @workspaces, index %></td>
+    <td>
+      <div class="round-image-100">
+        <%= image_tag(workspace.avatar.url(:medium)) %>
+      </div>
+    </td>
     <td><%= workspace.name %></td>
     <td><%= workspace.description %></td>
-    <td>
-      <%= link_to t(".edit"),
-        edit_workspace_path(workspace.id), remote: true %></td>
-    <td>
-      <%= link_to t(".delete"), workspace_path(workspace.id),
-        method: :delete,
-        data: {confirm: t("workspaces.delete_workspace_confirmation")} %>
-    </td>
+    <% if user_signed_in? %>
+      <% if current_user.manager? %>
+        <td>
+          <%= link_to t(".edit"),
+            edit_workspace_path(workspace.id), remote: true %></td>
+        <td>
+          <%= link_to t(".delete"), workspace_path(workspace.id), method: :delete,
+            data: {confirm: t("workspaces.delete_workspace_confirmation")} %>
+        </td>
+      <% end %>
+    <% end %>
     <td>
       <%= link_to t(".show"), workspace_path(workspace.id) %>
     </td>

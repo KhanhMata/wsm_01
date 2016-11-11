@@ -1,7 +1,7 @@
 <div class="banner-w3agile">
   <div class="row">
     <div class="col-md-12">
-      <%= link_to t(".new_user"), new_admin_user_path,
+      <%= link_to t(".new_user"), new_admin_user_path, remote: true,
         class: "btn btn-primary" %>
     </div>
   </div>
@@ -33,4 +33,5 @@
     </table>
     <%= paginate @users %>
   </div>
+  <div id="level-modal" class="modal fade"></div>
 </div>

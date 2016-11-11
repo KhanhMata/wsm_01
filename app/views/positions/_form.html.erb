@@ -1,5 +1,6 @@
 <div class="modal-dialog">
   <div class="modal-content">
+    <% if current_user.manager? %>
     <div class="modal-header">
       <h1><%= yield(:modal_title) %></h1>
     </div>
@@ -19,12 +20,19 @@
         <div class="form-group">
           <%= f.label :status %>
           <%= f.select :status, Position.statuses.keys.to_a, {},
-            {class: "form-control"} %>
+            class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :position_type_id %>
+          <%= f.select :position_type_id,
+            @position_types.collect {|position_type| [position_type.name,
+              position_type.id]}, {include_blank: true},
+              class: "form-control" %>
         </div>
         <div class="form-group" id="user">
           <%= f.label :user_id %>
           <%= f.select :user_id, @users.collect {|user| [user.name, user.id]},
-            {include_blank: true}, {class: "form-control"} %>
+            {include_blank: true}, class: "form-control" %>
         </div>
         <div class="form-group" id="deskcode">
           <%= f.label :desk_code %>
@@ -37,5 +45,42 @@
         </span>
       </div>
     <% end %>
+  <% else %>
+    <%= simple_form_for @position do |f| %>
+      <div class="modal-body">
+        <div class="form_errors">
+          <%= render "shared/error_messages", object: @position %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, disabled: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, disabled: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :status %>
+          <%= f.text_field :status, disabled: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :position_type_id %>
+          <%= f.select :position_type_id,
+            @position_types.collect {|position_type| [position_type.name,
+              position_type.id]}, {include_blank: true}, disabled: true,
+              class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :user_id %>
+          <%= f.select :user_id, @users.collect {|user| [user.name, user.id]},
+            {include_blank: true}, disabled: true, class: "form-control" %>
+        </div>
+        <div class="form-group" id="deskcode">
+          <%= f.label :desk_code %>
+          <%= f.text_field :desk_code, disabled: true, class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
   </div>
 </div>
