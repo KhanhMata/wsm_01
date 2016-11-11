@@ -17,4 +17,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 50}
 
   scope :newest, ->{order created_at: :desc}
+  scope :of_department, -> department_id {where(department_id: department_id)}
+  scope :of_company, -> company_id {where(company_id: company_id)}
+  scope :staff_with_department, -> {group :department_id}
 end

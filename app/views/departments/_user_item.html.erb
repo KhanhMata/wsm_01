@@ -1,0 +1,8 @@
+<% @users.each_with_index do |user, index| %>
+  <tr>
+    <td class="center"><%= increase_user index, @users %></td>
+    <td><%= link_to user.name, user_path(user) %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role.capitalize %></td>
+  </tr>
+<% end %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :workspaces
   resources :positions
+  resources :departments
 
   namespace :admin do
     root "static_pages#home"

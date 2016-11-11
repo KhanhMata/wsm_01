@@ -13,6 +13,9 @@
                 <% if user_signed_in? %>
                   <% if current_user.manager? %>
                     <li><%= link_to t("manage_workspace"), "#" %></li>
+                    <li><%= link_to t("manage_departments"),
+                      departments_path %>
+                    </li>
                     <li><%= link_to t("manage_users"), users_path %></li>
                     <li><%= link_to t("manage_skills"), "#" %></li>
                     <li><%= link_to t("manage_projects"),

@@ -98,6 +98,9 @@ en:
       created_user: "Create user successful!"
       deleted_user: "Delete user successful!"
       updated_user: "Update user successful!"
+      updated_department: "Update department successfully!"
+      created_department: "Create department successfully!"
+      deleted_department: "Delete department successfully!"
     danger:
       created_workspace: "Created subject failed!"
       deleted_workspace: "Deleted workspace failed!"
@@ -105,12 +108,13 @@ en:
       workspace_not_found: "Workspace is not found!"
       position_not_found: "Position is not found!"
       deleted_user: "Delete user failed"
+      delete_department: "Delete department failed!"
   projects:
     index:
       form: "Form :"
       name: "Name"
       new_project: "New Project"
-      abbrevation: "Abbrevation"
+      abbreviation: "Abbreviation"
       end_date: "End Date"
       start_date: "Start Date"
       actions: "Actions"
@@ -265,3 +269,32 @@ en:
       actions: "Actions"
     user_item:
       delete_user_confirmation: "Are you sure?"
+  departments:
+    index:
+      title: "Departments"
+    show:
+      view: "View"
+      name: "Name:"
+      abbreviation: "Abbreviation:"
+      description: "Description:"
+    new:
+      title: "New Department"
+      create_button: "Create!"
+      cancel_button: "Cancel"
+    edit:
+      title: "Edit Department"
+      submit_button: "Submit"
+      cancel_button: "Cancel"
+    department_list:
+      title: "Department List"
+      new_department: "New Department"
+      index_num: "Index"
+      name: "Department"
+      number_of_staffs: "Staffs"
+      actions: "Actions"
+    users_list:
+      title: "Staff List"
+      index_num: "Index"
+      name: "Name"
+      email: "Email"
+      role: "Role"
