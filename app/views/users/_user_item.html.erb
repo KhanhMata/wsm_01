@@ -4,7 +4,7 @@
     <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td><%= user.position.try(:workspace).try :name %></td>
-    <td><%= user.department %></td>
+    <td><%= user.department.try :abbreviation %></td>
     <td><%= user.position.try :desk_code %></td>
     <td><%= user.role.capitalize %></td>
     <td><%= l user.created_at, format: :date_month_year_concise %></td>

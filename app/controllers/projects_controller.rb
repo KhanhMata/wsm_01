@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :load_project, except: [:index, :new, :create]
+  load_and_authorize_resource
 
   def index
-    @projects = Project.newest.page(params[:page]).per Settings.pagination.project_per_page
+    @projects = Project.of_company(current_user.company_id).newest.page(params[:page]).per Settings.pagination.project_per_page
   end
 
   def new
@@ -42,15 +42,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit :name, :abbreviation,
-      :start_date, :end_date
-  end
-
-  def load_project
-    @project = Project.find_by id: params[:id]
-    unless @project
-      flash.now[:danger] = t "flash.danger.project_not_found"
-      redirect_to projects_path
-    end
+    params.require(:project).permit(:name, :abbreviation,
+      :start_date, :end_date).merge!(company_id: current_user.company_id)
   end
 end

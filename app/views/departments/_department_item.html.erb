@@ -1,0 +1,15 @@
+<% @departments.each_with_index do |department, index| %>
+  <tr>
+    <td class="center"><%= increase_index @departments, index %></td>
+    <td><%= "#{department.abbreviation} (#{department.name})" %></td>
+    <td><%= show_number_of_staffs department.id, @users_size %></td>
+    <td class="center">
+      <%= link_to image_tag("view.png", class:"img-responsi"),
+        department_path(department) %>
+    </td>
+    <td class="center">
+      <%= link_to image_tag("edit.png", class:"img-responsi"),
+        edit_department_path(department), remote: true %>
+    </td>
+  </tr>
+<% end %>

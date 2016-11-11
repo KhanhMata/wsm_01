@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :company
 
-  has_many :project_members
+  has_many :project_members, dependent: :destroy
   has_many :users, through: :project_members
 
   validates :start_date, presence: true
@@ -12,4 +12,5 @@ class Project < ApplicationRecord
     length: {maximum: Settings.maximum.projects.abbreviation}
 
   scope :newest, ->{order created_at: :desc}
+  scope :of_company, -> (id){where(company_id: id).order :name}
 end

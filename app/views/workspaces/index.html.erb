@@ -3,7 +3,7 @@
     <h3>
       <span>
         <%= link_to image_tag("new.png", class:"img-responsi"),
-          new_admin_workspace_path, remote: true, class: "btn btn-primarys" %>
+          new_workspace_path, remote: true, class: "btn btn-primarys" %>
       </span>
     </h3>
   </div>
@@ -14,10 +14,10 @@
     <table class="table table-hover table-bordered">
       <thead>
         <tr>
-          <th><%= t ".index" %></th>
-          <th><%= t ".name" %></th>
-          <th><%= t ".description" %></th>
-          <th colspan="2"><%= t ".action" %></th>
+          <th style="width: 80px"><%= t ".index" %></th>
+          <th style="width: 200px"><%= t ".name" %></th>
+          <th style="width: 500px"><%= t ".description" %></th>
+          <th colspan="3"><%= t ".action" %></th>
         </tr>
       </thead>
       <tbody id = "body_table_data">
