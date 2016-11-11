@@ -2,8 +2,10 @@
   <div class="container">
     <h3>
       <span>
-        <%= link_to image_tag("new.png", class:"img-responsi"),
-          new_workspace_path, remote: true, class: "btn btn-primarys" %>
+        <% if current_user.manager? %>
+          <%= link_to image_tag("new.png", class:"img-responsi"),
+            new_workspace_path, remote: true, class: "btn btn-primarys" %>
+        <% end %>
       </span>
     </h3>
   </div>

@@ -1,9 +1,9 @@
 class WorkspacesController < ApplicationController
-  before_action :load_workspace, only: [:edit, :update, :destroy, :show]
+  load_and_authorize_resource
 
   def index
-    @workspaces = Workspace.newest.page(params[:page])
-      .per Settings.pagination.per_page
+    @workspaces = Workspace.of_company(current_user.company_id).newest.
+      page(params[:page]).per Settings.pagination.per_page
   end
 
   def new
@@ -29,7 +29,21 @@ class WorkspacesController < ApplicationController
   end
 
   def update
+    update_number_of_rows
+    update_number_of_columns
     if @workspace.update_attributes workspace_params
+      if (@workspace.number_of_rows + @rows <= 0)
+        @workspace.number_of_rows = - @rows + 1
+      end
+      if (@workspace.number_of_columns + @columns <= 0)
+        @workspace.number_of_columns = - @columns + 1
+      end
+      @workspace.increase_positions(@rows, @columns, @workspace.number_of_rows,
+        @workspace.number_of_columns, @workspace)
+      @workspace.update_attribute(:number_of_rows,
+        (@workspace.number_of_rows + @rows))
+      @workspace.update_attribute(:number_of_columns,
+        (@workspace.number_of_columns + @columns))
       flash[:success] = t "flash.success.updated_workspace"
       redirect_to workspaces_path
     else
@@ -47,16 +61,16 @@ class WorkspacesController < ApplicationController
   end
 
   private
-  def workspace_params
-    params.require(:workspace).permit :name, :number_of_columns,
-      :number_of_rows, :description
+  def update_number_of_rows
+    @rows = @workspace.number_of_rows
   end
 
-  def load_workspace
-    @workspace = Workspace.find_by id: params[:id]
-    unless @workspace
-      flash.now[:danger] = t "flash.danger.workspace_not_found"
-      redirect_to workspaces_path
-    end
+  def update_number_of_columns
+    @columns = @workspace.number_of_columns
+  end
+
+  def workspace_params
+    params.require(:workspace).permit(:name, :number_of_columns,
+      :number_of_rows, :description).merge!(company_id: current_user.company_id)
   end
 end

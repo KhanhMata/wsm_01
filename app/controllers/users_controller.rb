@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :skip_password_attribute, only: :update
 
   def index
-    @users = User.newest.page(params[:page]).per Settings.users_paginates
+    @users = User.of_company(current_user.company_id).newest.
+      page(params[:page]).per Settings.users_paginates
   end
 
   def show
@@ -14,6 +15,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user.company
+      @departments = @user.company.departments
+    end
   end
 
   def update
@@ -28,8 +32,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      if user_signed_in?
+        @user.set_user_company current_user.company_id
+      end
       flash[:success] = t "flash.success.created_user"
-      redirect_to root_path
+      redirect_to users_path
     else
       render :new
     end
@@ -47,7 +54,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit :name, :email, :gender, :birthday, :password,
-      :password_confirmation, :role
+      :password_confirmation, :role, :department_id
   end
 
   def skip_password_attribute

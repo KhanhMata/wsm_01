@@ -4,13 +4,13 @@
       <div class="table-responsive">
         <table id="myTable">
           <% if @positions.present? %>
-            <% for i in 1..@workspace.number_of_columns %>
+            <% for i in 1..@positions.max.row %>
               <tr>
-                <% for j in 1..@workspace.number_of_rows %>
+                <% for j in 1..@positions.max.column %>
                   <td class="td_position_<%=i%>_<%=j%>">
-                    <% position= @positions.coordinates(i, j)[0] %>
-                    <%= link_to image_tag("#{check_status position}",
-                      class: "img-position"), edit_position_path(position),
+                    <%= link_to image_tag("#{check_status @positions.
+                      coordinates(i, j)[0]}", class: "img-position"),
+                      edit_position_path(@positions.coordinates(i, j)[0]),
                       remote: true, class: "btn_ps" %>
                   </td>
                 <% end %>

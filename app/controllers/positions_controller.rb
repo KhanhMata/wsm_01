@@ -2,7 +2,7 @@ class PositionsController < ApplicationController
   before_action :load_position, only: [:edit, :update]
 
   def edit
-    @users = User.all
+    @users = User.of_company(current_user.company_id)
   end
 
   def update

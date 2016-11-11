@@ -21,6 +21,14 @@
                     <%= f.label :email %>
                     <%= f.email_field :email, placeholder: t(".email") %>
                   </div>
+                  <% if @user.company %>
+                    <div class="form-group">
+                      <%= f.label :department_id %>
+                      <%= f.select :department_id,
+                        @departments.collect {|department| [department.name,
+                          department.id]}, {}, {class: "form-control"} %>
+                    </div>
+                  <% end %>
                   <div class="form-group">
                     <%= f.label :gender %>
                     <%= f.select :gender, Settings.gender, {},

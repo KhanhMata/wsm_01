@@ -12,4 +12,5 @@ class Project < ApplicationRecord
     length: {maximum: Settings.maximum.projects.abbreviation}
 
   scope :newest, ->{order created_at: :desc}
+  scope :of_company, -> (id){where(company_id: id).order :name}
 end

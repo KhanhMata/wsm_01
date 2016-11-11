@@ -3,31 +3,14 @@
     <div class="cal-main">
       <div class="calender graph-form">
         <div class="tool-tips">
-          <h3 class="inner-tittle two"><%= t ".simple_tooltips" %></h3>
-          <div class="tool-tips graph-form">
-            <div class="bs-example-tooltips">
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="left"
-                title="" data-original-title="Tooltip on left">
-                <%= t ".tooltip" %>
-              </button>
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="top"
-                title="" data-original-title="Tooltip on top">
-                <%= t ".tooltip_top" %>
-              </button>
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="bottom"
-                title="" data-original-title="Tooltip on bottom">
-                <%= t ".tooltip_bottom" %>
-              </button>
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="right"
-                title="" data-original-title="Tooltip on right">
-                <%= t ".tooltip_right" %>
-              </button>
-            </div>
-          </div>
+          <h3 class="inner-tittle two">
+            <% if user_signed_in? %>
+              <% unless current_user.company %>
+                <%= t ".update_company_notification" %>
+                <%= link_to t(".create_company_notification"), new_company_path %>
+              <% end %>
+            <% end %>
+          </h3>
         </div>
       </div>
     </div>
