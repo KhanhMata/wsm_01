@@ -1,35 +1,149 @@
-<div class="content">
-  <div class="women_main">
-    <div class="cal-main">
-      <div class="calender graph-form">
-        <div class="tool-tips">
-          <h3 class="inner-tittle two"><%= t ".simple_tooltips" %></h3>
-          <div class="tool-tips graph-form">
-            <div class="bs-example-tooltips">
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="left"
-                title="" data-original-title="Tooltip on left">
-                <%= t ".tooltip" %>
-              </button>
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="top"
-                title="" data-original-title="Tooltip on top">
-                <%= t ".tooltip_top" %>
-              </button>
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="bottom"
-                title="" data-original-title="Tooltip on bottom">
-                <%= t ".tooltip_bottom" %>
-              </button>
-              <button type="button" class="btn btn-default tip"
-                data-toggle="tooltip" data-placement="right"
-                title="" data-original-title="Tooltip on right">
-                <%= t ".tooltip_right" %>
-              </button>
-            </div>
-          </div>
+<div class="banner">
+  <div id="kb" class="carousel kb_elastic animate_text kb_wrapper"
+    data-ride="carousel" data-interval="6000" data-pause="hover">
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= link_to image_tag("home1.jpg", class:"img-responsive"), remote: true %>
+          <% if user_signed_in? %>
+            <% unless current_user.company %>
+              <div class="carousel-caption kb_caption kb_caption_right">
+                <h2 data-animation="animated flipInX">
+                  <%= t ".update_company_notification" %>
+                  <%= link_to t(".create_company_notification"), new_company_path %>
+                </h2>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="item">
+          <%= link_to image_tag("home2.jpg", class:"img-responsive"), remote: true %>
+          <% if user_signed_in? %>
+            <% unless current_user.company %>
+              <div class="carousel-caption kb_caption kb_caption_right">
+                <h2 data-animation="animated flipInX">
+                  <%= t ".update_company_notification" %>
+                  <%= link_to t(".create_company_notification"), new_company_path %>
+                </h2>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="item">
+          <%= link_to image_tag("home3.jpg", class:"img-responsive"), remote: true %>
+          <% if user_signed_in? %>
+            <% unless current_user.company %>
+              <div class="carousel-caption kb_caption kb_caption_right">
+                <h2 data-animation="animated flipInX">
+                  <%= t ".update_company_notification" %>
+                  <%= link_to t(".create_company_notification"), new_company_path %>
+                </h2>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="item">
+          <%= link_to image_tag("home4.jpg", class:"img-responsive"), remote: true %>
+          <% if user_signed_in? %>
+            <% unless current_user.company %>
+              <div class="carousel-caption kb_caption kb_caption_right">
+                <h2 data-animation="animated flipInX">
+                  <%= t ".update_company_notification" %>
+                  <%= link_to t(".create_company_notification"), new_company_path %>
+                </h2>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="item">
+          <%= link_to image_tag("home5.jpg", class:"img-responsive"), remote: true %>
+          <% if user_signed_in? %>
+            <% unless current_user.company %>
+              <div class="carousel-caption kb_caption kb_caption_right">
+                <h2 data-animation="animated flipInX">
+                  <%= t ".update_company_notification" %>
+                  <%= link_to t(".create_company_notification"), new_company_path %>
+                </h2>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="item">
+          <%= link_to image_tag("home6.jpg", class:"img-responsive"), remote: true %>
+          <% if user_signed_in? %>
+            <% unless current_user.company %>
+              <div class="carousel-caption kb_caption kb_caption_right">
+                <h2 data-animation="animated flipInX">
+                  <%= t ".update_company_notification" %>
+                  <%= link_to t(".create_company_notification"), new_company_path %>
+                </h2>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
+      <a class="left carousel-control kb_control_left" href="#kb"
+        role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-menu-left" aria-hidden="true">
+        </span>
+        <span class="sr-only"><%= t ".Previous" %></span>
+      </a>
+      <a class="right carousel-control kb_control_right" href="#kb"
+        role="button" data-slide="next">
+        <span class="glyphicon glyphicon-menu-right" aria-hidden="true">
+        </span>
+        <span class="sr-only"><%= t ".Next" %></span>
+      </a>
+  </div>
+  <script src="js/custom.js"></script>
+</div>
+<div class="sduiv3-section-max-container sduiv3-align-center
+  sduiv3-section-wrap pb0">
+  <div class="sduiv3-section-content">
+    <h2 class="sduiv3-section-title">
+      <strong>Who should list on ShareDesk?</strong>
+    </h2>
+    <p class="text-metal">ShareDesk Venue Partners have work and meeting spaces that are available for short-term bookings.</p>
+  </div>
+  <div class="sduiv3-flex-row sduiv3-flex-gutter-md sduiv3-flex-stack
+    sduiv3-flex-stack-gutter">
+    <div class="sduiv3-flex-cell">
+      <span class="sduiv3-card sduiv3-media-card-middle sduiv3-card-coworking
+        sduiv3-align-flex-middle">
+        <h2><strong>Coworking space</strong></h2>
+      </span>
+    </div>
+    <div class="sduiv3-flex-cell">
+      <span class="sduiv3-card sduiv3-media-card-middle sduiv3-card-business
+        sduiv3-align-flex-middle">
+        <h2><strong>Business center</strong></h2>
+      </span>
+    </div>
+    <div class="sduiv3-flex-cell">
+      <span class="sduiv3-card sduiv3-media-card-middle sduiv3-card-corporate
+        sduiv3-align-flex-middle">
+        <h2><strong>Corporate office</strong></h2>
+      </span>
+    </div>
+  </div>
+  <div class="sduiv3-flex-row sduiv3-flex-gutter-md sduiv3-flex-stack
+    sduiv3-flex-stack-gutter">
+    <div class="sduiv3-flex-cell">
+      <span class="sduiv3-card sduiv3-media-card-middle sduiv3-card-startup
+        sduiv3-align-flex-middle sduiv3-mb0">
+        <h2><strong>Startup office</strong></h2>
+      </span>
+    </div>
+    <div class="sduiv3-flex-cell">
+      <span class="sduiv3-card sduiv3-media-card-middle sduiv3-card-hotel
+        sduiv3-align-flex-middle sduiv3-mb0">
+        <h2><strong>Hotel</strong></h2>
+      </span>
+    </div>
+    <div class="sduiv3-flex-cell">
+      <span class="sduiv3-card sduiv3-media-card-middle sduiv3-card-studio
+        sduiv3-align-flex-middle sduiv3-mb0">
+        <h2><strong>Studio</strong></h2>
+      </span>
     </div>
   </div>
 </div>

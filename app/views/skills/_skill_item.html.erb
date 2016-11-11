@@ -1,0 +1,14 @@
+<% @skills.each_with_index do |skill, index| %>
+  <tr>
+    <td class="center"><%= increase_index @skills, index %></td>
+    <td><%= skill.name %></td>
+    <td class="center">
+      <%= link_to image_tag("view.png", class:"img-responsi"),
+        skill_path(skill) %>
+    </td>
+    <td class="center">
+      <%= link_to image_tag("edit.png", class:"img-responsi"),
+        edit_skill_path(skill), remote: true %>
+    </td>
+  </tr>
+<% end %>

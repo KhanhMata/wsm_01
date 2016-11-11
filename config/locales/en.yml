@@ -8,12 +8,14 @@ en:
   form_error_messages: "Form Error Messages"
   error_text: "Error text"
   login: "LOGIN"
+  sign_up: "SIGN UP"
   managers: "Managers"
   manage_users: "Users"
   workspaces: "Workspaces"
   manage_departments: "Departments"
-  manage_workspace: "My workspace"
-  user_workspace: "Our workspace"
+  manage_workspaces: "My workspaces"
+  manage_position_types: "Position Types"
+  user_workspaces: "Our workspaces"
   manage_skills: "Skills"
   manage_projects: "Projects"
   static_pages:
@@ -22,7 +24,8 @@ en:
       previous: "previous"
       april: "April 2016"
       next: "next"
-      simple_tooltips: "Simple Tooltips"
+      update_company_notification: "You don't have a company yet."
+      create_company_notification: "Please update!"
       tooltip: "Tooltip on left"
       tooltip_top: "Tooltip on top"
       tooltip_bottom: "Tooltip on bottom"
@@ -37,7 +40,7 @@ en:
   layouts:
     header:
       login: "Login"
-      callus: "Call us : 032 2352 782"
+      callus: "Call us : 096 4403 444"
       email: "Email"
       password: "password"
       remember: "Remember me"
@@ -70,14 +73,14 @@ en:
       my_cart: "My Cart"
       order_history: "Order History"
       payment: "Payment"
-      mark_peter: "Mark peter"
-      012-586987: "012-586987"
-      email: "mailto:info@example.com"
+      our_team: "iTeam"
+      our_phone_number: "096 4403 444"
+      email: "radnvk@gmail.com"
       customer_care: "CUSTOMER CARE"
       our_stores: "OUR STORES"
       my_account: "MY ACCOUNT"
       about_us: "ABOUT US"
-      design_by: "© 2016 Gretong. All Rights Reserved | Design by NNK"
+      design_by: "© 2016 WMS. All Rights Reserved | Design by iTeam"
   devise:
     passwords:
       new:
@@ -87,6 +90,8 @@ en:
       new:
         sign_up: "Sign Up"
         submit: "Submit"
+        title: "Sign Up"
+        datetime_form: "YYYY/MM/DD"
     sessions:
       new:
         login: "Login"
@@ -98,6 +103,15 @@ en:
       created_user: "Create user successful!"
       deleted_user: "Delete user successful!"
       updated_user: "Update user successful!"
+      updated_department: "Update department successfully!"
+      created_department: "Create department successfully!"
+      deleted_department: "Delete department successfully!"
+      created_company: "Update you company successfully!"
+      created_position_type: "Create Position Type successfully!"
+      updated_position_type: "Update Position Type successfully!"
+      updated_skill: "Update Skill successfully!"
+      updated_user_skill: "Update User Skill successfully!"
+      deleted_user_skill: "Delete User Skill successfully!"
     danger:
       created_workspace: "Created subject failed!"
       deleted_workspace: "Deleted workspace failed!"
@@ -105,12 +119,14 @@ en:
       workspace_not_found: "Workspace is not found!"
       position_not_found: "Position is not found!"
       deleted_user: "Delete user failed"
+      delete_department: "Delete department failed!"
+      delete_user_skill: "Delete User Skill failed!"
   projects:
     index:
       form: "Form :"
       name: "Name"
       new_project: "New Project"
-      abbrevation: "Abbrevation"
+      abbreviation: "Abbreviation"
       end_date: "End Date"
       start_date: "Start Date"
       actions: "Actions"
@@ -128,7 +144,6 @@ en:
     edit:
       edit_project: "Edit Project"
       submit_button: "Edit Project"
-
   admin:
     users:
       index:
@@ -163,7 +178,6 @@ en:
       list_workspaces:
         edit: "Edit"
         delete: "Delete"
-
   workspaces:
     create_workspace: "Create_workspace"
     delete_workspace_confirmation: "Are you sure delete workspace?"
@@ -186,8 +200,15 @@ en:
     edit:
       save_button: "Save"
       edit_workspace: "Edit workspace"
+      title: "Edit"
+      submit: "Submit"
+      increase_workspace_size: "Increase Workspace Size"
     form:
       create: "Create"
+    show:
+      search_user_or_deskcode: "User name or deskcode"
+      workspaces: "Workspaces"
+      number_of_staffs: "Staffs: "
   users:
     index:
       title: "Users"
@@ -203,6 +224,7 @@ en:
       created_at: "Created at"
       role: "Role"
       send_mail: "Send Mail"
+      skills: "Skills"
     users_list:
       title: "Users list"
       new_user: "New user"
@@ -215,6 +237,10 @@ en:
       actions: "Actions"
     user_item:
       delete_user_confirmation: "Are you sure you want to delete this user?"
+    user_skills:
+      edit: "Edit"
+      delete: "Delete"
+      delete_user_skill_confirm: "Are you sure?"
   positions:
     edit:
       edit_position: "Edit Position"
@@ -226,42 +252,88 @@ en:
       short_date: "%d-%m-%Y"
       date_month_year_concise: "%d-%m-%y"
       date_time: "%Y-%m-%d %H:%M"
-  users:
+  departments:
     index:
-      title: "Users"
+      title: "Departments"
     show:
       view: "View"
-      name: "Name"
-      workspace: "Workspace"
-      department: "Department"
-      position: "Position"
-      created_at: "Created at"
-      role: "Role"
-      send_mail: "Send mail"
+      name: "Name:"
+      abbreviation: "Abbreviation:"
+      description: "Description:"
     new:
-      default_password: "123456"
-      default_cfpassword: "123456"
-      create_button: "Create"
+      title: "New Department"
+      create_button: "Create!"
       cancel_button: "Cancel"
     edit:
-      title: "Edit User Profile"
-      name: "Name"
-      email: "Email"
-      department: "Department"
-      position: "Position"
-      birthday: "Date of birth"
-      submit: "Submit"
+      title: "Edit Department"
+      submit_button: "Submit"
+      cancel_button: "Cancel"
+    department_list:
+      title: "Department List"
+      new_department: "New Department"
+      index_num: "Index"
+      name: "Department"
+      number_of_staffs: "Staffs"
+      actions: "Actions"
     users_list:
-      new_user: "New User"
-      title: "Users"
+      title: "Staff List"
       index_num: "Index"
       name: "Name"
       email: "Email"
-      workspace: "Workspace"
-      department: "Department"
-      position: "Position"
       role: "Role"
-      created_at: "Created at"
+  companies:
+    new:
+      company_name_label: "Type your company name:"
+      submit_button: "Submit"
+      cancel_button: "Cancel"
+  position_types:
+    index:
+      title: "Position Types"
+    position_type_list:
+      new_position_type: "Add more"
+      title: "All position types"
+      index_num: "Index"
+      image: "Image"
+      name: "Name"
       actions: "Actions"
-    user_item:
-      delete_user_confirmation: "Are you sure?"
+    new:
+      title: "New Postion Type"
+      create_button: "Create"
+      cancel_button: "Cancel"
+    edit:
+      title: "Edit"
+      submit_button: "Submit"
+      cancel_button: "Cancel"
+    show:
+      view: "View"
+      name: "Name"
+      description: "Description"
+  skills:
+    index:
+      title: "Skills"
+    skill_list:
+      title: "All skills"
+      new_skill: "Add more"
+      index_num: "Index"
+      actions: "Actions"
+      name: "Name"
+    new:
+      title: "New Skill"
+      create_button: "Create"
+      cancel_button: "Cancel"
+    edit:
+      title: "Edit"
+      submit_button: "Submit"
+      cancel_button: "Cancel"
+    show:
+      view: "View"
+      name: "Name"
+  user_skills:
+    new:
+      title: "New User Skill"
+      create_button: "Create"
+      cancel_button: "Cancel"
+    edit:
+      title: "Edit"
+      submit_button: "Submit"
+      cancel_button: "Cancel"
