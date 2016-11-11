@@ -3430,7 +3430,7 @@ button.btn.btn-default.tip {
   -webkit-box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
   box-shadow: 0px 0px 2px 1px rgba(37, 37, 37, 0.39);
   padding-bottom: 2em;
-  margin-top:1em;
+  margin-top:30em;
 }
 @media screen and (max-width: 52.375em) {
   .tabs nav a:before {
@@ -5789,4 +5789,42 @@ input[type=month] {
 .img-position{
   width: 60px;
   height: 60px;
+}
+.img-responsi {
+  width:23px;
+  height:23px;
+}
+#result_search{
+  position: absolute;
+  z-index: 9999;
+}
+#user{
+  display: none;
+}
+#deskcode{
+  display: none;
+}
+.round-image-50 {
+  background-color: white;
+  border: 1px solid #d9d9d9;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  text-align: center;
+  img { width: 100% }
+}
+.round-image-60 {
+  background-color: white;
+  border: 1.5px solid #f77300;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  text-align: center;
+  img { width: 100% }
 }

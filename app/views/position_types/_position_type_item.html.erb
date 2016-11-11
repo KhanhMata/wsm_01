@@ -1,0 +1,19 @@
+<% @position_types.each_with_index do |position_type, index| %>
+  <tr>
+    <td class="center"><%= increase_index @position_types, index %></td>
+    <td>
+      <div class="round-image-50">
+        <%= image_tag(position_type.avatar.url(:thumb)) %>
+      </div>
+    </td>
+    <td><%= position_type.name %></td>
+    <td class="center">
+      <%= link_to image_tag("view.png", class:"img-responsi"),
+        position_type_path(position_type) %>
+    </td>
+    <td class="center">
+      <%= link_to image_tag("edit.png", class:"img-responsi"),
+        edit_position_type_path(position_type), remote: true %>
+    </td>
+  </tr>
+<% end %>

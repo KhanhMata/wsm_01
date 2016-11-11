@@ -3,14 +3,16 @@
     <td><%= increase_index @workspaces, index %></td>
     <td><%= workspace.name %></td>
     <td><%= workspace.description %></td>
-    <td>
-      <%= link_to t(".edit"),
-        edit_workspace_path(workspace.id), remote: true %></td>
-    <td>
-      <%= link_to t(".delete"), workspace_path(workspace.id),
-        method: :delete,
-        data: {confirm: t("workspaces.delete_workspace_confirmation")} %>
-    </td>
+    <% if current_user.manager? %>
+      <td>
+          <%= link_to t(".edit"),
+            edit_workspace_path(workspace.id), remote: true %></td>
+      <td>
+          <%= link_to t(".delete"), workspace_path(workspace.id),
+            method: :delete,
+            data: {confirm: t("workspaces.delete_workspace_confirmation")} %>
+      </td>
+    <% end %>
     <td>
       <%= link_to t(".show"), workspace_path(workspace.id) %>
     </td>

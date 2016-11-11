@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <% @positions_search.each do |position_search| %>
+  <li class="list-group-item">
+    <%= link_to position_search.user.name, "#",
+      data: {row: position_search.column, column: position_search.row},
+      class: "search-position" %>
+  </li>
+  <% end %>
+</ul>

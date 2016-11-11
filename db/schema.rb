@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115065715) do
+ActiveRecord::Schema.define(version: 20161123065536) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -45,17 +45,32 @@ ActiveRecord::Schema.define(version: 20161115065715) do
     t.index ["company_id"], name: "index_departments_on_company_id", using: :btree
   end
 
+  create_table "position_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "description",         limit: 65535
+    t.integer  "company_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.index ["company_id"], name: "index_position_types_on_company_id", using: :btree
+  end
+
   create_table "positions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.integer  "column"
     t.integer  "row"
     t.string   "desk_code"
-    t.integer  "status",                     default: 3
-    t.text     "description",  limit: 65535
+    t.integer  "status",                         default: 3
+    t.text     "description",      limit: 65535
     t.integer  "workspace_id"
     t.integer  "user_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "position_type_id"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.index ["position_type_id"], name: "index_positions_on_position_type_id", using: :btree
     t.index ["user_id"], name: "index_positions_on_user_id", using: :btree
     t.index ["workspace_id"], name: "index_positions_on_workspace_id", using: :btree
   end
@@ -118,6 +133,10 @@ ActiveRecord::Schema.define(version: 20161115065715) do
     t.integer  "department_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["department_id"], name: "index_users_on_department_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -136,6 +155,8 @@ ActiveRecord::Schema.define(version: 20161115065715) do
   end
 
   add_foreign_key "departments", "companies"
+  add_foreign_key "position_types", "companies"
+  add_foreign_key "positions", "position_types"
   add_foreign_key "positions", "users"
   add_foreign_key "positions", "workspaces"
   add_foreign_key "project_members", "projects"
