@@ -3,7 +3,7 @@
     <div class="modal-header">
       <h1><%= yield(:modal_title) %></h1>
     </div>
-    <%= simple_form_for [:admin, @user] do |f| %>
+    <%= simple_form_for @user, remote: true do |f| %>
       <div class="modal-body">
         <div class="form_errors">
           <%= render "shared/error_messages", object: @user %>
@@ -32,7 +32,7 @@
           <%= f.submit t(".create_button"), class: "btn btn-primary" %>
         </span>
         <span class="pull-left">
-          <%= link_to t(".cancel_button"), admin_users_path,
+          <%= link_to t(".cancel_button"), users_path,
             class: "btn btn-warning", data: {dismiss: "modal"} %>
         </span>
       </div>

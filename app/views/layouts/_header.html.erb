@@ -7,18 +7,27 @@
             <ul>
               <li><%= link_to t("home"), root_path %></li>
               <% if admin_signed_in? %>
-                <li><%= link_to t("managers"), admin_users_path %></li>
-                <li><%= link_to t("workspaces"), admin_workspaces_path %></li>
+                <li><%= link_to t("admin_users"), admin_users_path %></li>
+                <li><%= link_to t("admin_workspaces"), workspaces_path %></li>
+                <li><%= link_to t("admin_companies"), companies_path %></li>
               <% else %>
                 <% if user_signed_in? %>
                   <% if current_user.manager? %>
-                    <li><%= link_to t("manage_workspace"), "#" %></li>
-                    <li><%= link_to t("manage_users"), users_path %></li>
-                    <li><%= link_to t("manage_skills"), "#" %></li>
-                    <li><%= link_to t("manage_projects"),
-                      projects_path %></li>
+                    <% if current_user.company %>
+                      <li><%= link_to t("manage_workspaces"),
+                        workspaces_path %></li>
+                      <li><%= link_to t("manage_position_types"),
+                        position_types_path %></li>
+                      <li><%= link_to t("manage_departments"),
+                      departments_path %>
+                      <li><%= link_to t("manage_users"), users_path %></li>
+                      <li><%= link_to t("manage_skills"), skills_path %></li>
+                      <li><%= link_to t("manage_projects"),
+                        projects_path %></li>
+                    <% end %>
                   <% else %>
-                    <li><%= link_to t("user_workspace"), "#" %></li>
+                    <li><%= link_to t("user_workspaces"),
+                      workspaces_path %></li>
                   <% end %>
                 <% else %>
                   <li><%= link_to t("login"), "#" %></li>
@@ -84,6 +93,9 @@
                         method: :delete %>
                     </li>
                   </ul>
+                </li>
+                <li class="round-image-50">
+                  <%= image_tag(current_user.avatar.url(:thumb)) %>
                 </li>
               <% else %>
                 <%= link_to new_user_session_path do %>

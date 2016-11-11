@@ -1,0 +1,41 @@
+<% provide :title, @skill.name %>
+<div class="banner-w3agile">
+  <div class="container">
+    <h3>
+      <span>
+        <%= t (".view") %>
+      </span>
+    </h3>
+  </div>
+</div>
+<div class="container">
+  <div class="col-md-11" >
+    <%= tag(:br) %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title center"></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-skill-information">
+              <tbody>
+                <tr>
+                  <td><%= t ".name" %></td>
+                  <td><%= @skill.name %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to t(".new_user_skill"), new_user_skill_path, skill_id: @skill.id,
+      remote: true, class: "btn btn-primary" %>
+  </div>
+</div>
+<div id="level-modal" class="modal fade"></div>

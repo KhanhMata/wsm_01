@@ -22,12 +22,25 @@
             <table class="table table-user-information">
               <tbody>
                 <tr>
+                  <div class="round-image-50">
+                    <%= image_tag(@user.avatar.url(:thumb)) %>
+                  </div>
+                </tr>
+                <tr>
                   <td><%= t ".name" %></td>
                   <td><%= @user.name %></td>
                 </tr>
                 <tr>
                   <td><%= t ".email" %></td>
                   <td><%= @user.email %></td>
+                </tr>
+                <tr>
+                  <td><%= t ".company" %></td>
+                  <td><%= @user.company.try :name %></td>
+                </tr>
+                <tr>
+                  <td><%= t ".department" %></td>
+                  <td><%= @user.department.try :name %></td>
                 </tr>
                 <tr>
                   <td><%= t ".gender" %></td>
@@ -49,8 +62,15 @@
                     <span class="label label-danger"><%= @user.role %></span>
                   </td>
                 </tr>
+                <tr>
+                  <td><%= t ".skills" %></td>
+                  <td>
+                    <%= render "user_skills" %>
+                  </td>
+                </tr>
               </tbody>
             </table>
+            <div id="level-modal" class="modal fade"></div>
           </div>
         </div>
       </div>
