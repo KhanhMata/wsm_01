@@ -8,11 +8,13 @@ en:
   form_error_messages: "Form Error Messages"
   error_text: "Error text"
   login: "LOGIN"
+  sign_up: "SIGN UP"
   managers: "Managers"
   manage_users: "Users"
   workspaces: "Workspaces"
   manage_departments: "Departments"
-  manage_workspace: "My workspace"
+  manage_workspace: "My workspaces"
+  manage_users: "Users"
   user_workspace: "Our workspace"
   manage_skills: "Skills"
   manage_projects: "Projects"
@@ -22,7 +24,8 @@ en:
       previous: "previous"
       april: "April 2016"
       next: "next"
-      simple_tooltips: "Simple Tooltips"
+      update_company_notification: "You don't have a company yet."
+      create_company_notification: "Please update!"
       tooltip: "Tooltip on left"
       tooltip_top: "Tooltip on top"
       tooltip_bottom: "Tooltip on bottom"
@@ -87,6 +90,8 @@ en:
       new:
         sign_up: "Sign Up"
         submit: "Submit"
+        title: "Sign Up"
+        datetime_form: "YYYY/MM/DD"
     sessions:
       new:
         login: "Login"
@@ -95,9 +100,10 @@ en:
       created_workspace: "Created workspace successfully!"
       deleted_workspace: "Deleted workspace successfully!"
       updated_workspace: "Update workspace successfully!"
-      created_user: "Create user successful!"
-      deleted_user: "Delete user successful!"
-      updated_user: "Update user successful!"
+      updated_user: "Update user successfully!"
+      created_user: "Create user successfully!"
+      deleted_user: "Delete user successfully!"
+      created_company: "Update you company successfully!"
     danger:
       created_workspace: "Created subject failed!"
       deleted_workspace: "Deleted workspace failed!"
@@ -128,7 +134,6 @@ en:
     edit:
       edit_project: "Edit Project"
       submit_button: "Edit Project"
-
   admin:
     users:
       index:
@@ -163,7 +168,6 @@ en:
       list_workspaces:
         edit: "Edit"
         delete: "Delete"
-
   workspaces:
     create_workspace: "Create_workspace"
     delete_workspace_confirmation: "Are you sure delete workspace?"
@@ -221,6 +225,11 @@ en:
     form:
       edit: "Save"
       edit_position: "Edit Position"
+  companies:
+    new:
+      company_name_label: "Type your company name:"
+      submit_button: "Submit"
+      cancel_button: "Cancel"
   time:
     formats:
       short_date: "%d-%m-%Y"
@@ -243,6 +252,7 @@ en:
       default_cfpassword: "123456"
       create_button: "Create"
       cancel_button: "Cancel"
+      datetime_form: "YYYY/MM/DD"
     edit:
       title: "Edit User Profile"
       name: "Name"
